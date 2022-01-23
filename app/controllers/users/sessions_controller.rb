@@ -21,7 +21,7 @@ class Users::SessionsController < Devise::SessionsController
     end
 
     def log_out_success
-        render json: { message: 'Yes you are logged'}, status: :ok
+        render json: { message: 'Log out succesfully'}, status: :ok
     end
 
     def log_out_failure 

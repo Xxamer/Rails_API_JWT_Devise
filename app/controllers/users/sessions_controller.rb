@@ -2,10 +2,16 @@ class Users::SessionsController < Devise::SessionsController
     respond_to :json
     private
     def respond_with(resource, _opts = {})
+        unless current_user.nil?
         render json: {
             message: 'Logged in.',
             user: current_user,
         }, status: :ok
+        else
+            render json: {
+                message: 'No valid token.',
+            }, status: :unprocessable_entity
+        end
     end
 
     def respond_to_on_destroy
